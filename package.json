@@ -22,7 +22,8 @@
   },
   "dependencies": {
     "express": "^4.17.1",
-    "node-telegram-bot-api": "^0.53.0"
+    "node-telegram-bot-api": "^0.53.0",
+    "rpg-dice-roller": "^5.0.0"
   },
   "husky": {
     "hooks": {
