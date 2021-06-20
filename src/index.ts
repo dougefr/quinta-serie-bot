@@ -10,10 +10,10 @@ bot.setWebHook(process.env.HEROKU_URL + token);
 
 mocks.forEach((mock) => {
   bot.onText(mock.regex, (msg) => {
-    const { total } = new DiceRoll("10d10");
+    const { total } = new DiceRoll("1d10");
     console.log("Dice roll total: ", total);
 
-    if (total >= 85) {
+    if (total >= 8) {
       bot.sendMessage(msg.chat.id, mock.message, {
         reply_to_message_id: msg.message_id,
       });
