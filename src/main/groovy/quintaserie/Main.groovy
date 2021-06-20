@@ -11,6 +11,7 @@ class Main {
 
 	static void main(String[] args) {
 		port getenv("PORT") as Integer ?: 8080
+		get "/", () -> "it's working! :)"
 		post "/", (req, res) -> {
 			LOGGER.info req.body()
 		}
