@@ -1,18 +1,20 @@
 package quintaserie
 
+import org.telegram.telegrambots.bots.TelegramWebhookBot
+import org.telegram.telegrambots.meta.api.methods.BotApiMethod
+
 import static java.lang.Math.random
 import static java.lang.Math.round
 
 import java.util.logging.Logger
-import org.telegram.telegrambots.bots.TelegramLongPollingBot
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage
 import org.telegram.telegrambots.meta.api.objects.Update
 
 import static java.lang.System.getenv
 
-class QuintaSerieBot extends TelegramLongPollingBot {
+class QuintaSerieBot extends TelegramWebhookBot {
 
-	private static Logger LOGGER = Logger.getLogger QuintaSerieBot.class.simpleName
+	private static final LOGGER = Logger.getLogger QuintaSerieBot.class.simpleName
 
 	@Override
 	String getBotUsername() {
@@ -25,28 +27,24 @@ class QuintaSerieBot extends TelegramLongPollingBot {
 	}
 
 	@Override
-	void onUpdateReceived(Update update) {
+	BotApiMethod onWebhookUpdateReceived(Update update) {
 		update.getMessage()?.with { message ->
-			var messageText = message.getText()
-			var from = message.from
-			var reponseText = generateAnswer messageText, from, 10
+			final messageText = message.getText()
+			final from = message.from
+			final responseText = generateAnswer messageText, from, 10
 
-			if (reponseText) {
-				var response = new SendMessage(chatId: message.getChatId(), text: reponseText, replyToMessageId: message.messageId)
-
-				try {
-					execute(response)
-				} catch (e) {
-					e.printStackTrace()
-				}
+			if (responseText) {
+				new SendMessage(chatId: message.getChatId(), text: responseText, replyToMessageId: message.messageId)
 			}
 		}
+
+		return null
 	}
 
 	static def generateAnswer(msg, from, drawFactor) {
 		drawNumber().with { n ->
 			if (n % drawFactor == 0) {
-				return null
+				null
 			}
 		}
 
@@ -56,7 +54,7 @@ class QuintaSerieBot extends TelegramLongPollingBot {
 			case ~/ina*$/:
 				return "Tomate cru é vitamina, como você e sua prima"
 			default:
-				return null
+				null
 		}
 	}
 
@@ -65,5 +63,10 @@ class QuintaSerieBot extends TelegramLongPollingBot {
 			LOGGER.info "drawn number: $n"
 			n
 		}
+	}
+
+	@Override
+	String getBotPath() {
+		"https://quinta-serie-bot.herokuapp.com/"
 	}
 }

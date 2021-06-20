@@ -1,19 +1,18 @@
 package quintaserie
 
-import org.telegram.telegrambots.meta.TelegramBotsApi
-import org.telegram.telegrambots.meta.exceptions.TelegramApiException
-import org.telegram.telegrambots.updatesreceivers.DefaultBotSession
+import java.util.logging.Logger
+
+import static java.lang.System.getenv
+import static spark.Spark.*;
 
 
 class Main {
+    private static final LOGGER = Logger.getLogger Main.class.simpleName
 
     static void main(String[] args) {
-        try {
-            var telegramBotsApi = new TelegramBotsApi(DefaultBotSession.class);
-            telegramBotsApi.registerBot(new QuintaSerieBot());
-        } catch (TelegramApiException e) {
-            e.printStackTrace();
+        port getenv("PORT") as Integer ?: 8080
+        post "/", (req, res) -> {
+            LOGGER.info req.body()
         }
-
     }
 }
