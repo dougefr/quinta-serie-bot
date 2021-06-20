@@ -7,12 +7,12 @@ import static spark.Spark.*;
 
 
 class Main {
-    private static final LOGGER = Logger.getLogger Main.class.simpleName
+	private static final LOGGER = Logger.getLogger Main.class.simpleName
 
-    static void main(String[] args) {
-        port getenv("PORT") as Integer ?: 8080
-        post "/", (req, res) -> {
-            LOGGER.info req.body()
-        }
-    }
+	static void main(String[] args) {
+		port getenv("PORT") as Integer ?: 8080
+		post "/", (req, res) -> {
+			LOGGER.info req.body()
+		}
+	}
 }
