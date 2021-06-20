@@ -1,1 +1,1 @@
-java -jar target/quinta-serie-bot-1.0-SNAPSHOT-jar-with-dependencies.jar
+web:    java -jar target/quinta-serie-bot-1.0-SNAPSHOT-jar-with-dependencies.jar
