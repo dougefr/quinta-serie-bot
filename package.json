@@ -13,6 +13,9 @@
   "license": "ISC",
   "devDependencies": {
     "@types/express": "^4.17.12",
+    "@types/lime-js": "^0.0.29",
+    "@types/request-promise": "^4.1.47",
+    "@types/uuid": "^8.3.0",
     "@types/ws": "^7.4.4",
     "husky": "^4.3.0",
     "prettier": "2.1.2",
@@ -22,6 +25,9 @@
   },
   "dependencies": {
     "express": "^4.17.1",
+    "lime-js": "^3.0.1",
+    "request-promise": "^4.2.6",
+    "uuid": "^3.4.0",
     "ws": "^7.4.6"
   },
   "husky": {
