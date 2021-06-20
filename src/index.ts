@@ -13,7 +13,7 @@ app.get("/", (req, res) => {
   res.send("Hello World!");
 });
 
-app.post("/", (req, res) => {
+app.post(`/${token}`, (req, res) => {
   console.log(req.body);
 });
 
