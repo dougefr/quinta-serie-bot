@@ -1,9 +1,9 @@
 import express from "express";
-import http from "http";
-import HelloWorldBot from "./HelloWorldBot";
+import TelegramBot from "node-telegram-bot-api";
 
-// Instancia o BOT
-const bot = new HelloWorldBot(process.env.BLIP_KEY!);
+const token = process.env.TELEGRAM_TOKEN || "";
+const bot = new TelegramBot(token);
+bot.setWebHook(process.env.HEROKU_URL + token);
 
 // Cria a aplicação express
 const app = express();
@@ -15,13 +15,9 @@ app.get("/", (req, res) => {
 
 app.post("/", (req, res) => {
   console.log(req.body);
-  bot.handleMessage(req.body);
 });
 
-//Inicializa um servidor HTTP orquestrado pelo express
-const server = http.createServer(app);
-
 //Inicia o servidor
-server.listen(process.env.PORT || 8080, () => {
+app.listen(process.env.PORT || 8080, () => {
   console.log("Servidor inicializado na porta:", process.env.PORT || 8080);
 });
