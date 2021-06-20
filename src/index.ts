@@ -27,7 +27,8 @@ app.get("/", (req, res) => {
 });
 
 app.post(`/${token}`, (req, res) => {
-  console.log(req.body);
+  bot.processUpdate(req.body);
+  res.sendStatus(200);
 });
 
 //Inicia o servidor
