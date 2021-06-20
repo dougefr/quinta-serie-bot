@@ -12,6 +12,10 @@ app.get("/", (req, res) => {
 
 app.post("/", (req, res) => {
   console.log(req.body);
+  res.send({
+    ...req.body,
+    to: req.body.from
+  })
 });
 
 //Inicializa um servidor HTTP orquestrado pelo express
