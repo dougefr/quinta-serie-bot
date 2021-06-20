@@ -1,9 +1,22 @@
 import express from "express";
 import TelegramBot from "node-telegram-bot-api";
 
+// Cria o BOT
 const token = process.env.TELEGRAM_TOKEN || "";
 const bot = new TelegramBot(token);
 bot.setWebHook(process.env.HEROKU_URL + token);
+
+bot.onText(/ão$/, (msg) => {
+  bot.sendMessage(msg.chat.id, "Seu cu é o mar, meu pau o tubarão", {
+    reply_to_message_id: msg.message_id,
+  });
+});
+
+bot.onText(/ina$/, (msg) => {
+  bot.sendMessage(msg.chat.id, "Tomate cru é vitamina, como você e sua prima", {
+    reply_to_message_id: msg.message_id,
+  });
+});
 
 // Cria a aplicação express
 const app = express();
