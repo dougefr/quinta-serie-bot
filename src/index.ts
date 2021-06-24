@@ -25,6 +25,23 @@ mocks.forEach((mock) => {
   });
 });
 
+bot.onText(/^[A-Za-z]{5,}$/, (msg) => {
+  const { total } = new DiceRoll("1d10");
+  console.log("[Sending] Dice roll total: ", total);
+
+  if (total >= 8) {
+    bot.sendMessage(msg.chat.id, `${msg.text} de cú é rola`, {
+      reply_to_message_id: msg.message_id,
+    });
+  }
+});
+
+bot.onText(/[gG][Aa][Ll][Vv][ÃAãa][Oo]/, (msg) => {
+  bot.sendMessage(msg.chat.id, "Diga lá Tino!", {
+    reply_to_message_id: msg.message_id,
+  });
+});
+
 // Cria a aplicação express
 const app = express();
 app.use(express.json());
