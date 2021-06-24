@@ -29,7 +29,7 @@ bot.onText(/^[A-Za-z]{5,}$/, (msg) => {
   const { total } = new DiceRoll("1d10");
   console.log("[Sending] Dice roll total: ", total);
 
-  if (total >= 8) {
+  if (total >= 9) {
     bot.sendMessage(msg.chat.id, `${msg.text} de cú é rola`, {
       reply_to_message_id: msg.message_id,
     });
@@ -43,10 +43,10 @@ bot.onText(/[gG][Aa][Ll][Vv][ÃAãa][Oo]/, (msg) => {
 });
 
 bot.onText(/.*/, (msg) => {
-  const { total } = new DiceRoll("1d100");
+  const { total } = new DiceRoll("1d300");
   console.log("[Sending] Dice roll total: ", total);
 
-  if (total >= 99) {
+  if (total >= 290) {
     bot.sendMessage(msg.chat.id, "Cringe", {
       reply_to_message_id: msg.message_id,
     });
