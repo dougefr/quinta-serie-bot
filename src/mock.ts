@@ -102,6 +102,10 @@ const mocks: IMock[] = [
     regex: /cala\sboca/,
     messages: ["Cala boca já morreu quem manda na minha boca sou eu"],
   },
+  {
+    regex: /[Cc][Rr][Ii][Nn][Gg][Ee]/,
+    messages: ["Alá o zeniall"],
+  },
 ];
 
 export default mocks;
