@@ -13,7 +13,7 @@ mocks.forEach((mock) => {
     const { total } = new DiceRoll("1d10");
     console.log("[Sending] Dice roll total: ", total);
 
-    if (total >= 8) {
+    if (total > 9) {
       const { total: totalMsg } = new DiceRoll(`1d${mock.messages.length}`);
       console.log("[Choosing message] Dice roll total: ", totalMsg);
       const message = mock.messages[totalMsg - 1];
@@ -29,7 +29,7 @@ bot.onText(/^[A-Za-z]{5,}$/, (msg) => {
   const { total } = new DiceRoll("1d10");
   console.log("[Sending] Dice roll total: ", total);
 
-  if (total >= 9) {
+  if (total > 9) {
     bot.sendMessage(msg.chat.id, `${msg.text} de cú é rola`, {
       reply_to_message_id: msg.message_id,
     });
@@ -46,7 +46,7 @@ bot.onText(/.*/, (msg) => {
   const { total } = new DiceRoll("1d300");
   console.log("[Sending] Dice roll total: ", total);
 
-  if (total >= 295) {
+  if (total > 297) {
     bot.sendMessage(msg.chat.id, "Cringe", {
       reply_to_message_id: msg.message_id,
     });
