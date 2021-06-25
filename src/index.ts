@@ -46,7 +46,7 @@ bot.onText(/.*/, (msg) => {
   const { total } = new DiceRoll("1d300");
   console.log("[Sending] Dice roll total: ", total);
 
-  if (total >= 290) {
+  if (total >= 295) {
     bot.sendMessage(msg.chat.id, "Cringe", {
       reply_to_message_id: msg.message_id,
     });
