@@ -78,6 +78,12 @@ const mocks: IMock[] = [
       "Tomar no cu é verde, verde é bambu, bola na rede, meu pau no seu cu",
     ],
   },
+{
+    regex: /embro/,
+    messages: [
+      "Teu cu, meu membro",
+    ],
+  },
   {
     regex: /osta$/,
     messages: ["Vira o cu que eu tiro a bosta"],
